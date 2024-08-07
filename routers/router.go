@@ -1,8 +1,8 @@
 package routers
 
 import (
-	"go-gin-example/pkg/setting"
-	v1 "go-gin-example/routers/api/v1"
+	"gin-blog/pkg/setting"
+	v1 "gin-blog/routers/api/v1"
 
 	"github.com/gin-gonic/gin"
 )

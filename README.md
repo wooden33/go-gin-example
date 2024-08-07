@@ -1,1 +1,1 @@
-# go-gin-example
+# gin-blog

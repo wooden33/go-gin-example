@@ -2,14 +2,15 @@ package main
 
 import (
 	"fmt"
-	"go-gin-example/pkg/setting"
+	"gin-blog/pkg/setting"
+	"gin-blog/routers"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	router := gin.Default()
+	router := routers.InitRouter()
 	router.GET("/test", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "test",
