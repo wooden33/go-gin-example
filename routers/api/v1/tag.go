@@ -10,6 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/unknwon/com"
 
+	"gin-blog/pkg/logging"
 	"gin-blog/pkg/setting"
 )
 
@@ -63,6 +64,10 @@ func AddTag(c *gin.Context) {
 		} else {
 			code = e.ERROR_EXIST_TAG
 		}
+	} else {
+		for _, err := range valid.Errors {
+			logging.Info(err.Key, err.Value)
+		}
 	}
 
 	c.JSON(http.StatusOK, gin.H{
@@ -109,6 +114,10 @@ func EditTag(c *gin.Context) {
 		} else {
 			code = e.ERROR_NOT_EXIST_TAG
 		}
+	} else {
+		for _, err := range valid.Errors {
+			logging.Info(err.Key, err.Message)
+		}
 	}
 
 	c.JSON(http.StatusOK, gin.H{
@@ -132,6 +141,10 @@ func DeleteTag(c *gin.Context) {
 			models.DeleteTag(id)
 		} else {
 			code = e.ERROR_NOT_EXIST_TAG
+		}
+	} else {
+		for _, err := range valid.Errors {
+			logging.Info(err.Key, err.Message)
 		}
 	}
 
